@@ -1,0 +1,41 @@
+body{
+  background-image: url("music.jpg");
+  background-size: cover;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    left:28%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .chk {
+    position: absolute;
+    left: 7%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+    background-color: white;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

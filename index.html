@@ -1,0 +1,413 @@
+<script src="jquery-3.1.1.min.js"></script>
+<html>
+<link rel="stylesheet" href="main.css">
+<body>
+  <audio
+    id="sad" src="Sounds\sad.mp3" preload="auto">
+  </audio>
+    <audio
+      id="soundA" src="Sounds\A_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundAm" src="Sounds\Am_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundC" src="Sounds\C_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundD" src="Sounds\D_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundDm" src="Sounds\Dm_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundE" src="Sounds\E_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundEm" src="Sounds\Em_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundF" src="Sounds\F_64kb.mp3" preload="auto">
+    </audio>
+    <audio
+      id="soundG" src="Sounds\G_64kb.mp3" preload="auto">
+    </audio>
+    <center>
+    <h1>Guitar Chord Game</h1>
+  </center>
+  <center>
+  <table>
+  <tr>
+    <th id = "r1"> </th>
+    <th id = "r2"> </th>
+    <th id = "r3"> </th>
+  </tr>
+</table>
+</center>
+  <div class="container">
+      <img src="Pictures\fret.png" onclick="showCoords(event)" id = "fret" alt="fret" width="50%" draggable="false" style="margin: 50px 0 0 0;">
+
+      <form>
+      <input class="chk" style="top:24%;" type ='checkbox' id='e1'>
+      <input class="chk" style = "top: 34%" type ='checkbox' id='b1'>
+      <input class="chk" style = "top: 50%" type ='checkbox' id='g1'>
+      <input class="chk" style = "top: 65%" type ='checkbox' id='d1'>
+      <input class="chk" style = "top: 80%" type ='checkbox' id='a1'>
+      <input class="chk" style = "top: 95%" type ='checkbox' id='E1'>
+
+      <input class="chk" style="top:24%; left:21%" type ='checkbox' id='e2'>
+      <input class="chk" style = "top: 34%; left:21%" type ='checkbox' id='b2'>
+      <input class="chk" style = "top: 50%; left:21%" type ='checkbox' id='g2'>
+      <input class="chk" style = "top: 65%; left:21%" type ='checkbox' id='d2'>
+      <input class="chk" style = "top: 80%; left:21%" type ='checkbox' id='a2'>
+      <input class="chk" style = "top: 95%; left:21%" type ='checkbox' id='E2'>
+
+      <input class="chk" style="top:24%; left:35%" type ='checkbox' id='e3'>
+      <input class="chk" style = "top: 34%; left:35%" type ='checkbox' id='b3'>
+      <input class="chk" style = "top: 50%; left:35%" type ='checkbox' id='g3'>
+      <input class="chk" style = "top: 65%; left:35%" type ='checkbox' id='d3'>
+      <input class="chk" style = "top: 80%; left:35%" type ='checkbox' id='a3'>
+      <input class="chk" style = "top: 95%; left:35%" type ='checkbox' id='E3'>
+
+      <input class="chk" style="top:24%; left:50%" type ='checkbox' id='e4'>
+      <input class="chk" style = "top: 34%; left:50%" type ='checkbox' id='b4'>
+      <input class="chk" style = "top: 50%; left:50%" type ='checkbox' id='g4'>
+      <input class="chk" style = "top: 65%; left:50%" type ='checkbox' id='d4'>
+      <input class="chk" style = "top: 80%; left:50%" type ='checkbox' id='a4'>
+      <input class="chk" style = "top: 95%; left:50%" type ='checkbox' id='E4'>
+      </form>
+
+</div>
+<center>
+  <button onclick="uncheck()">Uncheck All</button>
+  <button onclick="ChordGen()">Generate Chords</button>
+  <h1 id="chord">  </h1>
+</center>
+  <center>
+    <h4>Click and swipe down on the strings to strum!</h4>
+    <img src="Pictures\strum.png" id = "circle" alt="fret" width="40%" draggable="false" style="margin: 0px 0 0 0">
+  </center>
+
+  <div>
+    <center>
+    <button type = 'button' onclick="play1('A')">A</button>
+    <button type = 'button' onclick="play1('Am')">Am</button>
+    <button type = 'button' onclick="play1('C')">C</button>
+    <button type = 'button' onclick="play1('D')">D</button>
+    <button type = 'button' onclick="play1('Dm')">Dm</button>
+    <button type = 'button' onclick="play1('E')">E</button>
+    <button type = 'button' onclick="play1('Em')">Em</button>
+    <button type = 'button' onclick="play1('F')">F</button>
+    <button type = 'button' onclick="play1('G')">G</button>
+    </center>
+  </div>
+
+</body>
+
+<script>
+
+  function showCoords(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    var coords = "X coords: " + x + ", Y coords: " + y;
+    console.log(coords);
+  }
+
+  function play(string){
+    //start audio 0.5-1 second in
+    if(string == "A"){
+      document.getElementById('soundA').currentTime = 1.2;
+      document.getElementById('soundA').play();
+    }
+    if(string == "Am"){
+      document.getElementById('soundAm').currentTime = 1.3;
+      document.getElementById('soundAm').play();
+    }
+    if(string == "C"){
+      document.getElementById('soundC').currentTime = 1.4;
+      document.getElementById('soundC').play();
+    }
+    if(string == "D"){
+      document.getElementById('soundD').currentTime = 1.2;
+      document.getElementById('soundD').play();
+    }
+    if(string == "Dm"){
+      document.getElementById('soundDm').currentTime = 1.1;
+      document.getElementById('soundDm').play();
+    }
+    if(string == "E"){
+      document.getElementById('soundE').currentTime = 0.8;
+      document.getElementById('soundE').play();
+    }
+    if(string == "Em"){
+      document.getElementById('soundEm').currentTime = 0.9;
+      document.getElementById('soundEm').play();
+    }
+    if(string == "F"){
+      document.getElementById('soundF').currentTime = 1;
+      document.getElementById('soundF').play();
+    }
+    if(string == "G"){
+      document.getElementById('soundG').currentTime = 1;
+      document.getElementById('soundG').play();
+    }
+  }
+
+  function play1(string){
+    uncheck();
+    if(string == "A"){
+      d2.checked = true;
+      g2.checked = true;
+      b2.checked = true;
+    }
+    if(string == "Am"){
+      b1.checked = true;
+      g2.checked = true;
+      d2.checked = true;
+    }
+    if(string == "C"){
+      b1.checked = true;
+      a3.checked = true;
+      d2.checked = true;
+    }
+    if(string == "D"){
+      e2.checked = true;
+      b3.checked = true;
+      g2.checked = true;
+    }
+    if(string == "Dm"){
+      e1.checked = true;
+      g2.checked = true;
+      b3.checked = true;
+    }
+    if(string == "E"){
+      a2.checked = true;
+      d2.checked = true;
+      b1.checked = true;
+    }
+    if(string == "Em"){
+      a2.checked = true;
+      d2.checked = true;
+    }
+    if(string == "F"){
+      e2.checked = true;
+      E2.checked = true;
+      b2.checked = true
+      a4.checked = true;
+      d4.checked = true;
+      g3.checked = true;
+    }
+    if(string == "G"){
+      e3.checked = true;
+      E3.checked = true;
+      a2.checked = true;
+    }
+  }
+  var tableNum;
+  var boxes = [3];
+  boxes[0] = document.getElementById("r1");
+  boxes[1] = document.getElementById("r2");
+  boxes[2] = document.getElementById("r3");
+
+  function ChordGen()
+  {
+    var rand = [3];
+    tableNum = 0;
+    for (var i = 0; i < 3; i++)
+    {
+      rand[i] = Math.floor(Math.random() * 9) + 1;
+      boxes[i].innerHTML = convertToChord(rand[i]);
+      boxes[i].style.backgroundColor = 'white';
+    }
+  }
+  function strum()
+  {
+    if(document.getElementById("e2").checked && document.getElementById("b2").checked && document.getElementById("E2").checked && document.getElementById("a4").checked && document.getElementById("d4").checked && document.getElementById("g3").checked){
+      console.log("F");
+      play("F");
+      chord.innerHTML = "F";
+    }
+    else if(document.getElementById("b1").checked && document.getElementById("g2").checked && document.getElementById("d2").checked){
+      console.log("Am");
+      play("Am");
+      chord.innerHTML = "Am";
+    }
+    else if(document.getElementById("a2").checked && document.getElementById("d2").checked && document.getElementById("b1").checked){
+      console.log("E");
+      play("E");
+      chord.innerHTML = "E";
+    }
+    else if(document.getElementById("a2").checked && document.getElementById("d2").checked){
+      console.log("Em");
+      play("Em");
+      chord.innerHTML = "Em";
+    }
+    else if(document.getElementById("b2").checked && document.getElementById("d2").checked && document.getElementById("g2").checked){
+      console.log("A");
+      play("A");
+      chord.innerHTML = "A";
+    }
+    else if(document.getElementById("a3").checked && document.getElementById("d2").checked && document.getElementById("b1").checked){
+      console.log("C");
+      play("C");
+      chord.innerHTML = "C";
+    }
+    else if(document.getElementById("e2").checked && document.getElementById("b3").checked && document.getElementById("g2").checked){
+      console.log("D");
+      play("D");
+      chord.innerHTML = "D";
+    }
+    else if(document.getElementById("e1").checked && document.getElementById("g2").checked && document.getElementById("b3").checked){
+      console.log("Dm");
+      play("Dm");
+      chord.innerHTML = "Dm";
+    }
+    else if(document.getElementById("e3").checked && document.getElementById("E3").checked && document.getElementById("a2").checked){
+      console.log("G");
+      play("G");
+      chord.innerHTML = "G";
+    }
+    else {
+      chord.innerHTML = "Not a valid chord!";
+      document.getElementById('sad').volume = 0.1;
+      document.getElementById('sad').play();
+    }
+
+    console.log(boxes[tableNum].innerHTML);
+    console.log(chord.innerHTML);
+    if (document.getElementById("chord").innerHTML == boxes[tableNum].innerHTML)
+    {
+      boxes[tableNum].style.backgroundColor = 'green';
+    }
+    else
+    {
+      boxes[tableNum].style.backgroundColor = 'red';
+    }
+    tableNum++;
+    uncheck();
+
+  }
+
+var touchStartCoords =  {'x':-1, 'y':-1}, // X and Y coordinates on mousedown or touchstart events.
+    touchEndCoords = {'x':-1, 'y':-1},// X and Y coordinates on mouseup or touchend events.
+    direction = 'undefined',// Swipe direction
+    minDistanceXAxis = 70,// Min distance on mousemove or touchmove on the X axis
+    maxDistanceYAxis = 70,// Max distance on mousemove or touchmove on the Y axis
+    maxAllowedTime = 1000,// Max allowed time between swipeStart and swipeEnd
+    startTime = 0,// Time on swipeStart
+    elapsedTime = 0,// Elapsed time between swipeStart and swipeEnd
+    targetElement = document.getElementById('circle');// Element to delegate
+
+function swipeStart(e) {
+  e = e ? e : window.event;
+  e = ('changedTouches' in e)?e.changedTouches[0] : e;
+  touchStartCoords = {'x':e.pageX, 'y':e.pageY};
+  startTime = new Date().getTime();
+  targetElement.textContent = " ";
+}
+
+function swipeMove(e){
+  e = e ? e : window.event;
+  e.preventDefault();
+}
+
+function swipeEnd(e) {
+  e = e ? e : window.event;
+  e = ('changedTouches' in e)?e.changedTouches[0] : e;
+  touchEndCoords = {'x':e.pageX - touchStartCoords.x, 'y':e.pageY - touchStartCoords.y};
+  elapsedTime = new Date().getTime() - startTime;
+  if (elapsedTime <= maxAllowedTime){
+    directionX = (touchEndCoords.x);
+    directionY = (touchEndCoords.y);
+
+    if(directionY > 50 || directionY < -50)
+    {
+      strum();
+    }
+  }
+}
+
+function addMultipleListeners(el, s, fn) {
+  var evts = s.split(' ');
+  for (var i=0, iLen=evts.length; i<iLen; i++) {
+    el.addEventListener(evts[i], fn, false);
+  }
+}
+
+function uncheck() {
+  document.getElementById("e1").checked = false;
+  document.getElementById("b1").checked = false;
+  document.getElementById("g1").checked = false;
+  document.getElementById("d1").checked = false;
+  document.getElementById("a1").checked = false;
+  document.getElementById("E1").checked = false;
+  document.getElementById("e2").checked = false;
+  document.getElementById("b2").checked = false;
+  document.getElementById("g2").checked = false;
+  document.getElementById("d2").checked = false;
+  document.getElementById("a2").checked = false;
+  document.getElementById("E2").checked = false;
+  document.getElementById("e3").checked = false;
+  document.getElementById("b3").checked = false;
+  document.getElementById("g3").checked = false;
+  document.getElementById("d3").checked = false;
+  document.getElementById("a3").checked = false;
+  document.getElementById("E3").checked = false;
+  document.getElementById("e4").checked = false;
+  document.getElementById("b4").checked = false;
+  document.getElementById("g4").checked = false;
+  document.getElementById("d4").checked = false;
+  document.getElementById("a4").checked = false;
+  document.getElementById("E4").checked = false;
+  chord.innerHTML = "";
+}
+
+function convertToChord(num)
+{
+  if(num == 1)
+  {
+    return "A";
+  }
+  else if(num == 2)
+  {
+    return "Am";
+  }
+  else if(num == 3)
+  {
+    return "C";
+  }
+  else if(num == 4)
+  {
+    return "D";
+  }
+  else if(num == 5)
+  {
+    return "Dm";
+  }
+  else if(num == 6)
+  {
+    return "E";
+  }
+  else if(num == 7)
+  {
+    return "Em";
+  }
+  else if(num == 8)
+  {
+    return "F";
+  }
+  else if(num == 9)
+  {
+    return "G";
+  }
+
+}
+
+addMultipleListeners(targetElement, 'mousedown touchstart', swipeStart);
+addMultipleListeners(targetElement, 'mousemove touchmove', swipeMove);
+addMultipleListeners(targetElement, 'mouseup touchend', swipeEnd);
+
+
+</script>
+
+</html>
